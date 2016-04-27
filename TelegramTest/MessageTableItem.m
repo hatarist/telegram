@@ -470,7 +470,8 @@ static NSTextAttachment *channelViewsCountAttachment() {
                 } else if(document.isAudio) {
                     objectReturn = [[MessageTableItemAudioDocument alloc] initWithObject:message];
                 } else if(document.isSticker) {
-                    objectReturn = [[MessageTableItemSticker alloc] initWithObject:message];
+                    message.message = [NSString stringWithFormat:@"%@ %@",((TL_documentAttributeSticker *)[document attributeWithClass:[TL_documentAttributeSticker class]]).alt,NSLocalizedString(@"Sticker", nil)];
+                    objectReturn = [[MessageTableItemText alloc] initWithObject:message ];
                 } else if(document.isVoice) {
                     objectReturn = [[MessageTableItemAudio alloc] initWithObject:message];
                 } else {
